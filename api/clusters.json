@@ -1,0 +1,150 @@
+{
+  "clusters": [
+    {
+      "id": "473dc862-d68e-419c-b2d0-b25edea34254",
+      "name": "Primary Cluster",
+      "metrics": {
+        "iops": [
+          { "time": "2023-11-21T10:00", "read": 10000, "write": 5000 },
+          { "time": "2023-11-21T11:00", "read": 15000, "write": 7000 },
+          { "time": "2023-11-21T12:00", "read": 12000, "write": 6000 },
+          { "time": "2023-11-21T13:00", "read": 17000, "write": 8000 },
+          { "time": "2023-11-21T14:00", "read": 20000, "write": 9000 },
+          { "time": "2023-11-21T15:00", "read": 13000, "write": 6500 },
+          { "time": "2023-11-21T16:00", "read": 16000, "write": 7500 },
+          { "time": "2023-11-21T17:00", "read": 19000, "write": 8500 },
+          { "time": "2023-11-21T18:00", "read": 21000, "write": 9500 },
+          { "time": "2023-11-21T19:00", "read": 22000, "write": 10000 },
+          { "time": "2023-11-21T20:00", "read": 18000, "write": 8000 },
+          { "time": "2023-11-21T21:00", "read": 23000, "write": 11000 },
+          { "time": "2023-11-21T22:00", "read": 24000, "write": 12000 },
+          { "time": "2023-11-21T23:00", "read": 25000, "write": 13000 },
+          { "time": "2023-11-22T00:00", "read": 26000, "write": 14000 },
+          { "time": "2023-11-22T01:00", "read": 27000, "write": 14500 },
+          { "time": "2023-11-22T02:00", "read": 28000, "write": 15000 },
+          { "time": "2023-11-22T03:00", "read": 29000, "write": 15500 },
+          { "time": "2023-11-22T04:00", "read": 30000, "write": 16000 },
+          { "time": "2023-11-22T05:00", "read": 31000, "write": 16500 },
+          { "time": "2023-11-22T06:00", "read": 32000, "write": 17000 },
+          { "time": "2023-11-22T07:00", "read": 33000, "write": 17500 },
+          { "time": "2023-11-22T08:00", "read": 34000, "write": 18000 },
+          { "time": "2023-11-22T09:00", "read": 35000, "write": 18500 },
+
+          { "time": "2023-11-23T10:00", "read": 10000, "write": 5000 },
+          { "time": "2023-11-23T11:00", "read": 15000, "write": 7000 },
+          { "time": "2023-11-23T12:00", "read": 12000, "write": 6000 },
+          { "time": "2023-11-23T13:00", "read": 17000, "write": 8000 },
+          { "time": "2023-11-23T14:00", "read": 20000, "write": 9000 },
+          { "time": "2023-11-23T15:00", "read": 13000, "write": 6500 },
+          { "time": "2023-11-23T16:00", "read": 16000, "write": 7500 },
+          { "time": "2023-11-23T17:00", "read": 19000, "write": 8500 },
+          { "time": "2023-11-23T18:00", "read": 21000, "write": 9500 },
+          { "time": "2023-11-23T19:00", "read": 22000, "write": 10000 },
+          { "time": "2023-11-23T20:00", "read": 18000, "write": 8000 },
+          { "time": "2023-11-23T21:00", "read": 23000, "write": 11000 },
+          { "time": "2023-11-23T22:00", "read": 24000, "write": 12000 },
+          { "time": "2023-11-23T23:00", "read": 25000, "write": 13000 },
+          { "time": "2023-11-24T00:00", "read": 26000, "write": 14000 },
+          { "time": "2023-11-24T01:00", "read": 27000, "write": 14500 },
+          { "time": "2023-11-24T02:00", "read": 28000, "write": 15000 },
+          { "time": "2023-11-24T03:00", "read": 29000, "write": 15500 },
+          { "time": "2023-11-24T04:00", "read": 30000, "write": 16000 },
+          { "time": "2023-11-24T05:00", "read": 31000, "write": 16500 },
+          { "time": "2023-11-24T06:00", "read": 32000, "write": 17000 },
+          { "time": "2023-11-24T07:00", "read": 33000, "write": 17500 },
+          { "time": "2023-11-24T08:00", "read": 34000, "write": 18000 },
+          { "time": "2023-11-24T09:00", "read": 35000, "write": 18500 }
+        ],
+        "throughput": [
+          { "time": "2023-11-21T10:00", "read": 10, "write": 5 },
+          { "time": "2023-11-21T11:00", "read": 12, "write": 6 },
+          { "time": "2023-11-21T12:00", "read": 14, "write": 7 },
+          { "time": "2023-11-21T13:00", "read": 13, "write": 8 },
+          { "time": "2023-11-21T14:00", "read": 15, "write": 9 },
+          { "time": "2023-11-21T15:00", "read": 18, "write": 10 },
+          { "time": "2023-11-21T16:00", "read": 20, "write": 11 },
+          { "time": "2023-11-21T17:00", "read": 22, "write": 12 },
+          { "time": "2023-11-21T18:00", "read": 24, "write": 13 },
+          { "time": "2023-11-21T19:00", "read": 26, "write": 14 },
+          { "time": "2023-11-21T20:00", "read": 28, "write": 15 },
+          { "time": "2023-11-21T21:00", "read": 30, "write": 16 },
+          { "time": "2023-11-21T22:00", "read": 32, "write": 17 },
+          { "time": "2023-11-21T23:00", "read": 34, "write": 18 },
+          { "time": "2023-11-22T00:00", "read": 36, "write": 19 },
+          { "time": "2023-11-22T01:00", "read": 38, "write": 20 },
+          { "time": "2023-11-22T02:00", "read": 40, "write": 21 },
+          { "time": "2023-11-22T03:00", "read": 42, "write": 22 },
+          { "time": "2023-11-22T04:00", "read": 44, "write": 23 },
+          { "time": "2023-11-22T05:00", "read": 46, "write": 24 },
+          { "time": "2023-11-22T06:00", "read": 48, "write": 25 },
+          { "time": "2023-11-22T07:00", "read": 50, "write": 26 },
+          { "time": "2023-11-22T08:00", "read": 52, "write": 27 },
+          { "time": "2023-11-22T09:00", "read": 54, "write": 28 },
+
+          { "time": "2023-11-23T10:00", "read": 10, "write": 5 },
+          { "time": "2023-11-23T11:00", "read": 12, "write": 6 },
+          { "time": "2023-11-23T12:00", "read": 14, "write": 7 },
+          { "time": "2023-11-23T13:00", "read": 13, "write": 8 },
+          { "time": "2023-11-23T14:00", "read": 15, "write": 9 },
+          { "time": "2023-11-23T15:00", "read": 18, "write": 10 },
+          { "time": "2023-11-23T16:00", "read": 20, "write": 11 },
+          { "time": "2023-11-23T17:00", "read": 22, "write": 12 },
+          { "time": "2023-11-23T18:00", "read": 24, "write": 13 },
+          { "time": "2023-11-23T19:00", "read": 26, "write": 14 },
+          { "time": "2023-11-23T20:00", "read": 28, "write": 15 },
+          { "time": "2023-11-23T21:00", "read": 30, "write": 16 },
+          { "time": "2023-11-23T22:00", "read": 32, "write": 17 },
+          { "time": "2023-11-23T23:00", "read": 34, "write": 18 },
+          { "time": "2023-11-24T00:00", "read": 36, "write": 19 },
+          { "time": "2023-11-24T01:00", "read": 38, "write": 20 },
+          { "time": "2023-11-24T02:00", "read": 40, "write": 21 },
+          { "time": "2023-11-24T03:00", "read": 42, "write": 22 },
+          { "time": "2023-11-24T04:00", "read": 44, "write": 23 },
+          { "time": "2023-11-24T05:00", "read": 46, "write": 24 },
+          { "time": "2023-11-24T06:00", "read": 48, "write": 25 },
+          { "time": "2023-11-24T07:00", "read": 50, "write": 26 },
+          { "time": "2023-11-24T08:00", "read": 52, "write": 27 },
+          { "time": "2023-11-24T09:00", "read": 54, "write": 28 }
+        ]
+      },
+      "snapshotPolicy": {
+        "policyName": "ProjectX_Daily",
+        "directory": "/Production/ProjectX",
+        "schedule": {
+          "type": "Daily",
+          "timeZone": "America/Los_Angeles",
+          "time": "07:00",
+          "days": ["Mon", "Wed", "Fri"],
+          "deleteAfter": 99
+        },
+        "isLocked": false
+      }
+    },
+    {
+      "id": "5570a22a-5d66-41a9-910a-5746c03da555",
+      "name": "Secondary Cluster",
+      "metrics": {
+        "iops": [
+          { "time": "2023-11-21T10:00", "read": 10000, "write": 5000 },
+          { "time": "2023-11-21T11:00", "read": 15000, "write": 7000 }
+        ],
+        "throughput": [
+          { "time": "2023-11-21T10:00", "read": 200, "write": 150 },
+          { "time": "2023-11-21T11:00", "read": 250, "write": 180 }
+        ]
+      },
+      "snapshotPolicy": {
+        "policyName": "ProjectX_Daily",
+        "directory": "/Production/ProjectX",
+        "schedule": {
+          "type": "Daily",
+          "timeZone": "America/Los_Angeles",
+          "time": "07:00",
+          "days": ["Mon", "Wed", "Fri"],
+          "deleteAfter": 99
+        },
+        "isLocked": true
+      }
+    }
+  ]
+}
