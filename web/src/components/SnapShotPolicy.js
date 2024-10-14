@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 const SnapShotPolicy = ({handleSubmit, snapshot}) => {
     const [form, setForm] = React.useState({
         policyName: '',
-        directory : '',
+        directory: '',
         schedule: {
             type: '',
             timeZone: '',
@@ -11,13 +11,13 @@ const SnapShotPolicy = ({handleSubmit, snapshot}) => {
             days: '',
             deleteAfter: '',
         },
-        isLocked : false,
+        isLocked: false,
     });
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         setForm({
             policyName: snapshot?.policyName || '',
-            directory : snapshot?.directory || '',
+            directory: snapshot?.directory || '',
             schedule: {
                 type: snapshot?.type || 'daily',
                 timeZone: snapshot?.timeZone || 'America/Los_Angeles',
@@ -25,12 +25,12 @@ const SnapShotPolicy = ({handleSubmit, snapshot}) => {
                 days: snapshot?.days || [],
                 deleteAfter: snapshot?.deleteAfter || '',
             },
-            isLocked : snapshot?.isLocked || false,
+            isLocked: snapshot?.isLocked || false,
         })
-    },[snapshot])
+    }, [snapshot])
 
     const handleInputChange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const {name, value, type, checked} = e.target;
         setForm((prevForm) => ({
             ...prevForm,
             [name]: type === 'checkbox' ? checked : value,
@@ -38,7 +38,7 @@ const SnapShotPolicy = ({handleSubmit, snapshot}) => {
     };
 
     const handleScheduleChange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const {name, value, type, checked} = e.target;
         setForm((prevForm) => ({
             ...prevForm,
             schedule: {
@@ -49,7 +49,7 @@ const SnapShotPolicy = ({handleSubmit, snapshot}) => {
     };
 
     const handleDayChange = (e, day) => {
-        const { checked } = e.target;
+        const {checked} = e.target;
         setForm((prevForm) => ({
             ...prevForm,
             schedule: {
@@ -62,72 +62,94 @@ const SnapShotPolicy = ({handleSubmit, snapshot}) => {
     };
 
     return (
-        <div className="flex-1 p-8 bg-gray-900">
-            <header className="mb-8">
-                <h2 className="text-3xl text-white">Edit Snapshot Policy</h2>
-            </header>
-
-            <div className="p-6 rounded">
-                <form className="space-y-6">
+        <div className="border border-[#283038] bg-[#1B222B] px-4 py-3">
+            <h2 className="text-xl font-light mb-4">Edit Snapshot Policy</h2>
+            <div>
+                <form className="flex flex-col gap-6">
                     <div>
-                        <label className="block text-white text-lg">Policy Name</label>
+                        <label className="text-lg block text-[#C7CACC] font-normal mb-2">Policy Name</label>
                         <input
                             type="text"
                             name="policyName"
                             value={form.policyName}
                             onChange={handleInputChange}
-                            className="bg-gray-700 p-3 text-white rounded w-full"
+                            className="text-lg block font-normal text-[#C7CACC] w-full border border-[#424B53] bg-[#424B5380] rounded p-2 ring-0"
                         />
                     </div>
                     <div>
-                        <label className="block text-white text-lg">Apply to Directory</label>
-                        <input
-                            type="text"
-                            name="directory"
-                            value={form.directory}
-                            onChange={handleInputChange}
-                            className="bg-gray-700 p-3 text-white rounded w-full"
-                        />
+                        <label className="text-lg block text-[#C7CACC] font-normal mb-2">Apply to Directory</label>
+                        <div className="flex relative overflow-hidden">
+                            <div
+                                className='px-5 flex items-center bg-[#1B222C] border border-[#424B53] rounded rounded-tr-none rounded-br-none'>/
+                            </div>
+                            <input
+                                type="text"
+                                name="directory"
+                                value={form.directory}
+                                onChange={handleInputChange}
+                                className="
+                                text-lg block font-normal text-[#C7CACC] 
+                                w-full p-2 border border-[#424B53] bg-[#424B5380]
+                                rounded rounded-tl-none rounded-bl-none"/>
+                        </div>
                     </div>
-                    <p>Run policy on the following schedule</p>
-                    <div className="bg-gray-800 p-6 rounded">
-                        <div className="flex items-center mt-2 mb-5">
-                            <label className="block text-white text-lg">Select Schedule Type</label>
+                    <p className='text-lg block text-[#C7CACC] font-normal mb-2'>Run policy on the following
+                        schedule</p>
+                    <div className="p-8 border border-[#424B53] bg-[#242C35]">
+                        <div className="flex items-center gap-6 mt-2 mb-5 text-right">
+                            <label
+                                className="w-60 flex-shrink-0 flex-grow-0 basis-60 text-lg tex6-[#C7CACC] font-normal leading-normal">
+                                Select Schedule Type
+                            </label>
                             <select
                                 name="type"
                                 value={form.schedule.type}
                                 onChange={handleScheduleChange}
-                                className="bg-gray-700 p-3 text-white rounded ml-3"
+                                className="text-lg block font-normal text-[#C7CACC] 
+                                p-2 border border-[#424B53] bg-[#424B5380]
+                                rounded min-w-[130px]"
                             >
                                 <option value="daily">Daily</option>
                                 <option value="weekly">Weekly</option>
                             </select>
                         </div>
-                        <div className="flex items-center mt-2 mb-5">
-                            <label className="block text-white text-lg">Set Time Zone</label>
+                        <div className="flex items-center gap-6 mt-2 mb-5 text-right">
+                            <label
+                                className="w-60 flex-shrink-0 flex-grow-0 basis-60 text-lg tex6-[#C7CACC] font-normal leading-normal">
+                                Set Time Zone
+                            </label>
                             <select
                                 name="timeZone"
                                 value={form.schedule.timeZone}
                                 onChange={handleScheduleChange}
-                                className="bg-gray-700 p-3 text-white rounded ml-3"
+                                className="text-lg block font-normal text-[#C7CACC] 
+                                p-2 border border-[#424B53] bg-[#424B5380]
+                                rounded min-w-[130px]"
                             >
                                 <option value="America/Los_Angeles">America/Los Angeles</option>
                                 <option value="Asia/Kolkata">Asia/Kolkata</option>
                                 {/* Add other timezones here */}
                             </select>
                         </div>
-                        <div className="flex items-center mt-2 mb-5">
-                            <label className="block text-white text-lg">Take a Snapshot at</label>
+                        <div className="flex items-center gap-6 mt-2 mb-5 text-right">
+                            <label
+                                className="w-60 flex-shrink-0 flex-grow-0 basis-60 text-lg tex6-[#C7CACC] font-normal leading-normal">
+                                Take a Snapshot at
+                            </label>
                             <input
                                 type="time"
                                 name="time"
                                 value={form.schedule.time}
                                 onChange={handleScheduleChange}
-                                className="bg-gray-700 p-3 text-white rounded ml-3"
+                                className="text-lg block font-normal text-[#C7CACC] 
+                                p-2 border border-[#424B53] bg-[#424B5380]
+                                rounded min-w-[130px]"
                             />
                         </div>
-                        <div className="flex items-center mt-2 mb-5">
-                            <label className="block text-white text-lg">On the Following Day(s)</label>
+                        <div className="flex items-center gap-6 mt-2 mb-5 text-right">
+                            <label
+                                className="w-60 flex-shrink-0 flex-grow-0 basis-60 text-lg tex6-[#C7CACC] font-normal leading-normal">
+                                On the Following Day(s)</label>
                             <div className="flex space-x-4 ml-5">
                                 {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => (
                                     <label key={day} className="flex items-center space-x-2">
@@ -143,9 +165,11 @@ const SnapShotPolicy = ({handleSubmit, snapshot}) => {
                             </div>
                         </div>
 
-                        <div className="flex items-center mt-2 mb-5">
-                            <label className="block text-white text-lg">Delete Each Snapshot</label>
-                            <div className="flex space-x-4 ml-5">
+                        <div className="flex items-center gap-6 mt-2 mb-5 text-right">
+                            <label
+                                className="w-60 flex-shrink-0 flex-grow-0 basis-60 text-lg tex6-[#C7CACC] font-normal leading-normal">Delete
+                                Each Snapshot</label>
+                            <div className="flex items-center space-x-4 ml-5">
                                 <label className="flex items-center space-x-2">
                                     <input
                                         type="radio"
@@ -182,43 +206,48 @@ const SnapShotPolicy = ({handleSubmit, snapshot}) => {
 
                     </div>
 
-                    <div className="flex flex-col space-x-4">
-                        <h4 className="font-bold mt-4 mb-4">Snapshot locking</h4>
-                        <p>
+                    <div className="flex flex-col">
+                        <h4 className="text-lg font-normal text-[#C7CACC] mb-2 leading-normal">Snapshot locking</h4>
+                        <p className='text-base text-[#A6AAAE] leading-normal mb-2'>
                             Locked snapshots cannot be deleted before the deletion schedule expires. For this feature
                             to be available, snapshots must be set to automatically delete
                         </p>
-                        <div>
+                        <div className='flex items-center'>
                             <input
                                 type="checkbox"
                                 name="isLocked"
                                 checked={form.isLocked}
                                 onChange={handleInputChange}
-                                className="form-checkbox text-blue-600 mr-5"
+                                className="form-checkbox text-blue-600 mr-2 w-4 h-4 bg-[#646B72]"
                             />
-                            <label className="text-white mr-5">Enable locked snapshots</label>
+                            <label className="text-white">Enable locked snapshots</label>
                         </div>
                     </div>
 
-                    <div className="flex justify-between items-center">
-                        <label className="flex items-center space-x-2">
+                    <div className="flex justify-between items-center mt-5">
+                        <label className="flex items-center">
                             <input
                                 type="checkbox"
                                 name="isPolicyEnabled"
                                 checked={form.isPolicyEnabled}
                                 onChange={handleInputChange}
-                                className="form-checkbox text-blue-600"
+                                className="form-checkbox text-blue-600 mr-2 w-4 h-4 bg-[#646B72]"
                             />
                             <span className="text-white">Enable policy</span>
                         </label>
 
                     </div>
-                    <button
-                        onClick={(e)=>{handleSubmit(e, form)}}
-                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded"
-                    >
-                        Save Policy
-                    </button>
+                    <div className='flex items-center ga-4'>
+                        <button
+                            onClick={(e) => {
+                                handleSubmit(e, form)
+                            }}
+                            className="py-2 px-4 rounded bg-[#007ACC] shadow-md text-lg text-[#FFFFFF] font-normal leading-tight"
+                        >
+                            Save Policy
+                        </button>
+                        <button className='py-2 px-4 rounded  text-lg text-[#0298FF] font-normal leading-tight'>Cancel</button>
+                    </div>
                 </form>
             </div>
         </div>

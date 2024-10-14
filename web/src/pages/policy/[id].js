@@ -6,34 +6,34 @@ import SnapShotPolicy from "@/components/SnapShotPolicy";
 
 const Policy = () => {
     const router = useRouter();
-
+    const {id} = router.query;
     const [snapshotPolicy, setSnapshotPolicy] = useState([]);
-    const [clusterId, setClusterId] = useState(null);
+  
 
     useEffect(() => {
-        if (router.isReady) {
-            setClusterId(router.query.id);
+        if(!id){
+            return;
         }
-    },[router.isReady])
-
-
-    useEffect(() => {
-        axios.get(`${process.env.apiUrl}/clusters/${clusterId}/snapshot-policy`)
+        axios.get(`${process.env.apiUrl}/clusters/${id}/snapshot-policy`)
             .then(res=>{
                 setSnapshotPolicy(res.data);
             })
             .catch(err=>console.log(err));
-    }, [clusterId]);
+    }, [id]);
     
     const handleSubmit = (e, data) => {
         e.preventDefault();
-        console.log(data)
+        axios.put(`${process.env.apiUrl}/clusters/${id}/snapshot-policy`, data)
+            .then(res=>{
+                alert('Successfully updated Snapshot Policy');
+            })
+            .catch(err=>console.log(err));
     }
     
     
     
     return (
-        <Layout >
+        <Layout id={id}>
             <SnapShotPolicy snapshot={snapshotPolicy} handleSubmit={handleSubmit}/>
         </Layout>
     );

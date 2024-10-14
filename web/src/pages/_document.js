@@ -6,7 +6,7 @@ export default function Document() {
         <Head>
             <title>Qumulo</title>
         </Head>
-        <body className="antialiased">
+        <body className="antialiased font-nunito">
         <Main />
         <NextScript />
       </body>

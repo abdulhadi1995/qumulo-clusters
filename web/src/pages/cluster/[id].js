@@ -6,28 +6,31 @@ import axios from "axios";
 
 const Cluster = () => {
     const router = useRouter();
+    const {id} = router.query;
     
     const [cluster, setCluster] = useState([]);
-    const [clusterId, setClusterId] = useState(null);
-    
+    const [totalIops, setTotalIops] = useState({});
+    const [totalThroughput, setTotalThroughput] = useState({});
+   
     useEffect(() => {
-        if (router.isReady) {
-            setClusterId(router.query.id);
+        if(!id){
+            return;
         }
-    },[router.isReady])
-    
-    
-    useEffect(() => {
-        console.log(setClusterId);
-        axios.get(`${process.env.apiUrl}/clusters/${clusterId}/metrics`)
+        axios.get(`${process.env.apiUrl}/clusters/${id}/metrics`)
             .then(res=>{
-                setCluster(res.data);
+                setCluster(res.data?.cluster);
+                setTotalIops(res.data?.totalIOPS);
+                setTotalThroughput(res.data?.totalThroughput);
             })
             .catch(err=>console.log(err));    
-        }, [clusterId]);
+        }, [id]);
     return (
-        <Layout name={cluster?.name} id={cluster?.id}>
-            <PerformanceMetrics cluster={cluster}/>
+        <Layout name={cluster?.name} id={id}>
+            <PerformanceMetrics 
+                cluster={cluster}
+                totalIops={totalIops}
+                totalThroughput={totalThroughput}
+            />
         </Layout>
     );
 };

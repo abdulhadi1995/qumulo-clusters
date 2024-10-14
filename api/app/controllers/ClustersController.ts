@@ -1,4 +1,4 @@
-import type { HttpContext } from '@adonisjs/core/http'
+import type {HttpContext} from '@adonisjs/core/http'
 import fs from 'fs';
 
 export default class ClustersController {
@@ -20,7 +20,22 @@ export default class ClustersController {
       if (!cluster) {
         return response.status(404).send('Cluster not found');
       }
-      response.status(200).json(cluster);
+      const totalIOPS = cluster.metrics.iops.reduce((acc: { readTotal: any; writeTotal: any; }, entry: { read: any; write: any; }) => {
+        acc.readTotal += entry.read;
+        acc.writeTotal += entry.write;
+        return acc;
+      }, { readTotal: 0, writeTotal: 0 });
+
+      const totalThroughput = cluster.metrics.throughput.reduce((acc: { readTotal: any; writeTotal: any; }, entry: { read: any; write: any; }) => {
+        acc.readTotal += entry.read;
+        acc.writeTotal += entry.write;
+        return acc;
+      }, { readTotal: 0, writeTotal: 0 });
+      response.status(200).json({
+        cluster: cluster,
+        totalIOPS: totalIOPS,
+        totalThroughput: totalThroughput,
+      });
     } catch (error) {
       console.error('Error fetching cluster data:', error);
       response.status(500).send('Failed to retrieve cluster data');
@@ -47,14 +62,15 @@ export default class ClustersController {
     try {
       const timeSeriesData = JSON.parse(fs.readFileSync('clusters.json', 'utf-8'));
       const cluster = timeSeriesData.clusters.find((c: { id: string }) => c.id === params.id);
+      const clusterIndex = timeSeriesData.clusters.findIndex((c: { id: string }) => c.id === params.id);
       if (!cluster) {
         return response.status(404).send('Cluster not found');
       }
 
       const newPolicy = request.body();
-      //update the specific entry
+      timeSeriesData.clusters[clusterIndex] = {...cluster, snapshotPolicy: newPolicy};
 
-      fs.writeFileSync('clusters.json', JSON.stringify(newPolicy, null, 2));
+      fs.writeFileSync('clusters.json', JSON.stringify(timeSeriesData, null, 2));
 
       response.status(200).json({ message: 'Snapshot policy updated successfully' });
     } catch (error) {
