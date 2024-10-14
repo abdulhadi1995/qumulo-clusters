@@ -6,6 +6,11 @@
 This repo has 2 separate code bases, one for Adonis js inside the `api` directory 
 and another for Next.js inside the `web` directory. 
 
+In the API folder copy the `.env.example` file in a new `.env` file and set
+`APP_KEY=y9w_OQRfnEXtFF3N2dXTUZG9Hk82b4WC`
+
+For web the API url is set already in next.config.mjs. 
+
 Open 2 terminals then on 1 
 
 ```bash

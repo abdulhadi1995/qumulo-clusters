@@ -11,7 +11,7 @@ const PerformanceMetrics = ({cluster , totalIops , totalThroughput}) => {
                 <div className="flex flex-col md:flex-row gap-4">
                     <ResponsiveContainer width="100%" height={300}>
                         <LineChart data={cluster?.metrics?.iops}>
-                            <XAxis dataKey="time"/>
+                            <XAxis dataKey="time" tick={<DateFormatter/>}/>
                             <YAxis/>
                             <Tooltip/>
                             <Line type="monotone" dataKey="read" stroke="#8884d8" name="Read"/>
@@ -38,7 +38,7 @@ const PerformanceMetrics = ({cluster , totalIops , totalThroughput}) => {
                 <div className="flex flex-col md:flex-row gap-4">
                     <ResponsiveContainer width="100%" height={300}>
                         <LineChart data={cluster?.metrics?.throughput}>
-                            <XAxis dataKey="time"/>
+                            <XAxis dataKey="time" tick={<DateFormatter/>}/>
                             <YAxis/>
                             <Tooltip/>
                             <Line type="monotone" dataKey="read" stroke="#8884d8" name="Read"/>
@@ -65,3 +65,20 @@ const PerformanceMetrics = ({cluster , totalIops , totalThroughput}) => {
 };
 
 export default PerformanceMetrics;
+
+
+const DateFormatter = (props) => {
+    const { x, y, stroke, payload } = props;
+    const date = new Date(payload?.value);
+    
+    const options = { month: 'short', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
+
+   return (
+       <g transform={`translate(${x},${y})`}>
+           <text x={0} y={0} dy={16} textAnchor="end" fill="#666">
+               {formattedDate}
+           </text>
+       </g>
+   )
+};
